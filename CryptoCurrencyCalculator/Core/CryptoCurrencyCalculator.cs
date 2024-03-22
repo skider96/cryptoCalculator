@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CryptoCurrencyCalculator.Core
 {
-    internal class CryptoCurrencyCalculator
+    public class CryptoCurrencyCalculator
     {
         private double currentValue;
         private double annualInterestRate;
@@ -83,24 +83,28 @@ namespace CryptoCurrencyCalculator.Core
         }
 
 
-        //Не се използват още
-
-        public void CalculateInterestWithCompounding(int numberOfDays, double regularDeposit = 0)
+        public string CalculateInterestWithCompounding(int numberOfDays, double regularDeposit = 0)
         {
+            StringBuilder sb = new();
+            double valueBefore = CurrentValue;
             for (int i = 0; i < numberOfDays; i++)
             {
                 double dailyInterest = CalculateDailyInterest();
                 CurrentValue += dailyInterest + regularDeposit;
                 Console.WriteLine($"Day {i + 1}: Current value: {CurrentValue:f2}");
+                sb.AppendLine($"Day {i + 1}: Current value: {CurrentValue:f2}");
             }
+
+            CurrentValue = valueBefore;
+            return sb.ToString().TrimEnd();
         }
 
         public double CalculateFutureValue(int numberOfDays, double regularDeposit = 0)
         {
             double futureValue = CurrentValue;
-            for (int i = 0; i < numberOfDays; i++)
+            double dailyInterest = CalculateDailyInterest();
+            for (int i = 0; i <= numberOfDays; i++)
             {
-                double dailyInterest = CalculateDailyInterest();
                 futureValue += dailyInterest + regularDeposit;
             }
             return futureValue;

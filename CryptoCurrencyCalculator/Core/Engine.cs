@@ -2,7 +2,7 @@
 using System;
 using System.Text;
 
-namespace CryptoCurrencyCalculator
+namespace CryptoCurrencyCalculator.Core
 {
     public class Engine
     {
@@ -17,6 +17,10 @@ namespace CryptoCurrencyCalculator
 
         public void Run()
         {
+            Console.WriteLine("Write the name of the crypto currency:");
+            string currencyName = _inputProvider.GetInput();
+            _outputProvider.WriteOutput($"This calculation is for {currencyName}");
+
             Console.WriteLine("Write Initial deposit:");
             double initialValue = Convert.ToDouble(_inputProvider.GetInput()); // Initial deposit
 
@@ -26,14 +30,14 @@ namespace CryptoCurrencyCalculator
             Console.WriteLine("Write number of days to calculate interest for:");
             int numberOfDays = Convert.ToInt32(_inputProvider.GetInput()); // Number of days to calculate interest for
 
-            Console.WriteLine("Enter token value or 0 to skip:");
-            double tokenValue = double.Parse(Console.ReadLine());
-
+            Console.WriteLine("Enter token value (optional, press Enter to skip):");
+            double tokenValue = GetOptionalData();
+            
             try
             {
-                Core.CryptoCurrencyCalculator calculator = new(initialValue, annualInterestRate);
-        
-                 _outputProvider.WriteOutput(calculator.CalculateDailyInterest().ToString());
+                CryptoCurrencyCalculator calculator = new(initialValue, annualInterestRate);
+
+                _outputProvider.WriteOutput($"The calculated daily interest is: {calculator.CalculateDailyInterest().ToString()}");
 
                 if (tokenValue != 0)
                 {
@@ -41,19 +45,23 @@ namespace CryptoCurrencyCalculator
                 }
 
                 Console.WriteLine("Enter regular deposit amount (optional, press Enter to skip):");
-                string regularDepositInput = _inputProvider.GetInput();
-                double regularDeposit = string.IsNullOrEmpty(regularDepositInput) ? 0 : Convert.ToDouble(regularDepositInput);
-                calculator.CalculateInterestWithCompounding(numberOfDays, regularDeposit);
-                double futureValue = calculator.CalculateFutureValue(numberOfDays, regularDeposit);
-                _outputProvider.WriteOutput($"Future value after {numberOfDays} days: {futureValue:f2}");
+                double regularDeposit = GetOptionalData();
 
-            
+                _outputProvider.WriteOutput(calculator.CalculateInterestWithCompounding(numberOfDays, regularDeposit));
+                double futureValue = calculator.CalculateFutureValue(numberOfDays, regularDeposit);
                 _outputProvider.WriteOutput($"Future value after {numberOfDays} days: {futureValue:f2}");
             }
             catch (ArgumentOutOfRangeException e)
             {
                 Console.WriteLine(e.Message);
             }
+        }
+
+        public double GetOptionalData()
+        {
+            string regularDepositInput = _inputProvider.GetInput();
+            double regularDeposit = string.IsNullOrEmpty(regularDepositInput) ? 0 : Convert.ToDouble(regularDepositInput);
+            return regularDeposit;
         }
     }
 }

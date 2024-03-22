@@ -15,15 +15,14 @@ namespace CryptoCurrencyCalculator.IO.File
             this.filePath = filePath;
         }
 
-
         public void WriteOutput(string output)
         {
             Console.WriteLine(output);
             // Създаване на файлов поток към файла
-            using (FileStream fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write))
+            using (FileStream fileStream = new(filePath, FileMode.Append, FileAccess.Write))
             {
                 // Инициализиране на StreamWriter
-                using (StreamWriter streamWriter = new StreamWriter(fileStream))
+                using (StreamWriter streamWriter = new(fileStream))
                 {
                     // Записване на данните
                     streamWriter.WriteLine(output);

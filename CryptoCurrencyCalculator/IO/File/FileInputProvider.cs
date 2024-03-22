@@ -9,6 +9,6 @@
 
     public string GetInput()
     {
-        return File.ReadAllText(this.filePath);
+        return File.ReadAllText(filePath);
     }
 }
