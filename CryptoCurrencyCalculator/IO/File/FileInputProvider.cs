@@ -4,11 +4,27 @@
 
     public FileInputProvider(string filePath)
     {
-        this.filePath = filePath;
+        FilePath = filePath;
+    }
+
+    public string FilePath
+    {
+        get => filePath;
+        set
+        {
+            if (!value.EndsWith(".txt") || !value.EndsWith(".doc"))
+            {
+                throw new ArgumentException("The file path is not correct!");
+            }
+
+            filePath = value;
+        }
     }
 
     public string GetInput()
     {
-        return File.ReadAllText(filePath);
+        return File.ReadAllText(FilePath);
     }
+
+
 }

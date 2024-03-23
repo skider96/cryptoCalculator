@@ -41,13 +41,13 @@ namespace CryptoCurrencyCalculator.Core
 
                 if (tokenValue != 0)
                 {
-                    _outputProvider.WriteOutput($"The estimated reward value in USD is: {calculator.CalculateCryptoToUSD(tokenValue)}");
+                    _outputProvider.WriteOutput($"The estimated reward value in EUR is: {calculator.CalculateCryptoToEUR(tokenValue)}");
                 }
 
                 Console.WriteLine("Enter regular deposit amount (optional, press Enter to skip):");
                 double regularDeposit = GetOptionalData();
 
-                _outputProvider.WriteOutput(calculator.CalculateInterestWithCompounding(numberOfDays, regularDeposit));
+                _outputProvider.WriteOutput(calculator.CalculateInterestWithCompounding(numberOfDays, regularDeposit, tokenValue));
                 double futureValue = calculator.CalculateFutureValue(numberOfDays, regularDeposit);
                 _outputProvider.WriteOutput($"Future value after {numberOfDays} days: {futureValue:f2}");
             }

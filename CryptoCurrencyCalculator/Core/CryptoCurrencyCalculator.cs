@@ -77,13 +77,16 @@ namespace CryptoCurrencyCalculator.Core
             return CurrentValue * (dailyInterestRate / 100);
         }
 
-        public double CalculateCryptoToUSD(double tokenValueForOne)
+        public double CalculateCryptoToEUR(double tokenValueForOne)
         {
             return FirstInterest() * tokenValueForOne;
         }
+        public double CalculateCryptoToEURDaily(double tokenValueForOne)
+        {
+            return CurrentValue * tokenValueForOne;
+        }
 
-
-        public string CalculateInterestWithCompounding(int numberOfDays, double regularDeposit = 0)
+        public string CalculateInterestWithCompounding(int numberOfDays, double regularDeposit = 0, double tokenValueForOne = 0)
         {
             StringBuilder sb = new();
             double valueBefore = CurrentValue;
@@ -91,8 +94,8 @@ namespace CryptoCurrencyCalculator.Core
             {
                 double dailyInterest = CalculateDailyInterest();
                 CurrentValue += dailyInterest + regularDeposit;
-                Console.WriteLine($"Day {i + 1}: Current value: {CurrentValue:f2}");
-                sb.AppendLine($"Day {i + 1}: Current value: {CurrentValue:f2}");
+                Console.WriteLine($"Day {i + 1}: Current value: {CurrentValue:f5}");
+                sb.AppendLine($"Day {i + 1}: Current value: {CurrentValue:f5} Current value in EUR:{CalculateCryptoToEURDaily(tokenValueForOne)}");
             }
 
             CurrentValue = valueBefore;
