@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.WebSockets;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 
 namespace CryptoCurrencyCalculator.Core
 {
@@ -86,6 +81,11 @@ namespace CryptoCurrencyCalculator.Core
             return CurrentValue * tokenValueForOne;
         }
 
+        public double CalculateCryptoToEURDailyReward(double dailyInterest, double tokenValueForOne)
+        {
+            return dailyInterest * tokenValueForOne;
+        }
+
         public string CalculateInterestWithCompounding(int numberOfDays, double regularDeposit = 0, double tokenValueForOne = 0)
         {
             StringBuilder sb = new();
@@ -94,8 +94,12 @@ namespace CryptoCurrencyCalculator.Core
             {
                 double dailyInterest = CalculateDailyInterest();
                 CurrentValue += dailyInterest + regularDeposit;
+                double cryptoToEURAll = CalculateCryptoToEURDaily(tokenValueForOne);
+                double rewardToEURDaily = CalculateCryptoToEURDailyReward(dailyInterest, tokenValueForOne);
+
                 Console.WriteLine($"Day {i + 1}: Current value: {CurrentValue:f5}");
-                sb.AppendLine($"Day {i + 1}: Current value: {CurrentValue:f5} Current value in EUR:{CalculateCryptoToEURDaily(tokenValueForOne)}");
+                sb.AppendLine($"Day {i + 1}: Current value: {CurrentValue:f5}\nCurrent value in EUR:{cryptoToEURAll:f3} The value of the reward in EUR: {rewardToEURDaily:F3}");
+                sb.AppendLine();
             }
 
             CurrentValue = valueBefore;

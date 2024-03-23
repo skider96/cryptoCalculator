@@ -1,10 +1,6 @@
-﻿using System;
-using System.IO;
-using System.Runtime.CompilerServices;
-using CryptoCurrencyCalculator.Core;
+﻿using CryptoCurrencyCalculator.Core;
 using CryptoCurrencyCalculator.IO.File;
 using CryptoCurrencyCalculator.IO.Validator;
-using CryptoCurrencyCalculator.IO.WebAPI;
 
 namespace CryptoCurrencyCalculator
 {

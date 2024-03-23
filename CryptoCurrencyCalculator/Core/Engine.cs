@@ -1,8 +1,4 @@
-﻿using CryptoCurrencyCalculator.IO.File;
-using System;
-using System.Text;
-
-namespace CryptoCurrencyCalculator.Core
+﻿namespace CryptoCurrencyCalculator.Core
 {
     public class Engine
     {
@@ -32,7 +28,49 @@ namespace CryptoCurrencyCalculator.Core
 
             Console.WriteLine("Enter token value (optional, press Enter to skip):");
             double tokenValue = GetOptionalData();
-            
+
+            // Добавяне на възможност за връщане назад и промяна на данните
+            string userInput;
+            do
+            {
+                Console.WriteLine("Do you want to go back and change any input? (y/n)");
+                userInput = _inputProvider.GetInput().ToLower();
+
+                if (userInput == "y")
+                {
+                    Console.WriteLine("Which input do you want to change? (deposit/interest/days)");
+                    string inputToChange = _inputProvider.GetInput().ToLower();
+
+                    switch (inputToChange)
+                    {
+                        case "deposit":
+                            do
+                            {
+                                Console.WriteLine("Write Initial deposit:");
+                            } while (!double.TryParse(_inputProvider.GetInput(), out initialValue) || initialValue < 0);
+                            break;
+
+                        case "interest":
+                            do
+                            {
+                                Console.WriteLine("Write Annual interest rate:");
+                            } while (!double.TryParse(_inputProvider.GetInput(), out annualInterestRate) || annualInterestRate < 0);
+                            break;
+
+                        case "days":
+                            do
+                            {
+                                Console.WriteLine("Write number of days to calculate interest for:");
+                            } while (!int.TryParse(_inputProvider.GetInput(), out numberOfDays) || numberOfDays <= 0);
+                            break;
+
+                        default:
+                            Console.WriteLine("Invalid input.");
+                            break;
+                    }
+                }
+            } while (userInput == "y");
+
             try
             {
                 CryptoCurrencyCalculator calculator = new(initialValue, annualInterestRate);
