@@ -1,4 +1,6 @@
-﻿namespace CryptoCurrencyCalculator.Core
+﻿using CryptoCurrencyCalculator.IO.Validator;
+
+namespace CryptoCurrencyCalculator.Core
 {
     public class Engine
     {
@@ -26,7 +28,7 @@
             Console.WriteLine("Write number of days to calculate interest for:");
             int numberOfDays = Convert.ToInt32(_inputProvider.GetInput()); // Number of days to calculate interest for
 
-            Console.WriteLine("Enter token value (optional, press Enter to skip):");
+            Console.WriteLine("Enter token value to EUR(optional, press Enter to skip):");
             double tokenValue = GetOptionalData();
 
             // Добавяне на възможност за връщане назад и промяна на данните
@@ -38,31 +40,34 @@
 
                 if (userInput == "y")
                 {
-                    Console.WriteLine("Which input do you want to change? (deposit/interest/days)");
+                    Console.WriteLine("Which input do you want to change? (deposit/interest/days/name/token value)");
                     string inputToChange = _inputProvider.GetInput().ToLower();
 
                     switch (inputToChange)
                     {
                         case "deposit":
-                            do
-                            {
-                                Console.WriteLine("Write Initial deposit:");
-                            } while (!double.TryParse(_inputProvider.GetInput(), out initialValue) || initialValue < 0);
+                            initialValue = InputValidator.GetValidDoubleInput("Write Initial deposit:", _inputProvider);
                             break;
 
                         case "interest":
-                            do
-                            {
-                                Console.WriteLine("Write Annual interest rate:");
-                            } while (!double.TryParse(_inputProvider.GetInput(), out annualInterestRate) || annualInterestRate < 0);
+                            annualInterestRate = InputValidator.GetValidDoubleInput("Write Annual interest rate:", _inputProvider);
                             break;
 
                         case "days":
-                            do
-                            {
-                                Console.WriteLine("Write number of days to calculate interest for:");
-                            } while (!int.TryParse(_inputProvider.GetInput(), out numberOfDays) || numberOfDays <= 0);
+                            numberOfDays = InputValidator.GetValidIntInput("Write number of days to calculate interest for:", _inputProvider);
                             break;
+
+                        case "name":
+                            currencyName = InputValidator.GetValidStringInput("Write the crypto currency name to calculate interest for:", _inputProvider);
+                            break;
+                       
+                        case "token value":
+                            tokenValue = InputValidator.GetValidDoubleInput("Enter token value to EUR(optional, press Enter to skip):", _inputProvider);
+                            break;
+                        //This is not implemented yet
+                        //case "filepath":
+                        //    filePath = InputValidator.GetValidStringInput("Write the filepath of the output file:", _inputProvider);
+                        //    break;
 
                         default:
                             Console.WriteLine("Invalid input.");

@@ -25,6 +25,4 @@
     {
         return File.ReadAllText(FilePath);
     }
-
-
 }

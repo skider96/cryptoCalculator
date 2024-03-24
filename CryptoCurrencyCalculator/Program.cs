@@ -10,8 +10,7 @@ namespace CryptoCurrencyCalculator
         {
             Console.WriteLine("This is Crypto Calculator");
             InputValidator validator = new InputValidator();
-            Console.WriteLine("Choose input source (1 for console, 2 for file, 3 for WebAPI (not implemented)):");
-            int inputChoice = Convert.ToInt32(Console.ReadLine());
+            int inputChoice = InputReader.GetInputChoice(new ConsoleInputProvider());
 
             IInputProvider inputProvider = (inputChoice == 2) ? new FileInputProvider(Console.ReadLine()) : (IInputProvider)new ConsoleInputProvider();
 
@@ -21,9 +20,7 @@ namespace CryptoCurrencyCalculator
 
             if (saveToFileChoice.ToLower() == "y")
             {
-                bool isCorrectFilePath = false;
-                Console.WriteLine("Enter file path to save the output:");
-                filePath = validator.FilePathValidation(isCorrectFilePath, filePath, inputProvider);
+                filePath = validator.GetValidFilePath(inputProvider, validator);
             }
 
             IOutputProvider outputProvider = string.IsNullOrEmpty(filePath) ? (IOutputProvider)new ConsoleOutputProvider() : new FileOutputProvider(filePath);
