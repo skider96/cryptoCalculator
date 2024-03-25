@@ -5,13 +5,13 @@ VisualStudioVersion = 17.9.34518.117
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptoCurrencyCalculator", "CryptoCurrencyCalculator\CryptoCurrencyCalculator.csproj", "{037E73F5-DF6D-495D-AD4A-6633303B0894}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "demoGraphicCalc", "demoGraphicCalc\demoGraphicCalc.csproj", "{D27E706B-B889-4958-B6EC-FB0C43FEBEC0}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoCalcAppForSmartphones.Android", "CryptoCalcAppForSmartphones\CryptoCalcAppForSmartphones.Android\CryptoCalcAppForSmartphones.Android.csproj", "{A0D60B7F-6E6B-43FE-8AA6-CF4FD1A35A43}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoCalcAppForSmartphones.iOS", "CryptoCalcAppForSmartphones\CryptoCalcAppForSmartphones.iOS\CryptoCalcAppForSmartphones.iOS.csproj", "{94E013C0-4B3C-4D7D-A822-0585B16E609F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoCalcAppForSmartphones", "CryptoCalcAppForSmartphones\CryptoCalcAppForSmartphones\CryptoCalcAppForSmartphones.csproj", "{CC8C4BF3-EBBE-4EE2-A2F3-168FC4B56541}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptoCalcAppForSmartphones", "CryptoCalcAppForSmartphones\CryptoCalcAppForSmartphones\CryptoCalcAppForSmartphones.csproj", "{CC8C4BF3-EBBE-4EE2-A2F3-168FC4B56541}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormsApp1", "WinFormsApp1\WinFormsApp1.csproj", "{0407CB5D-BDE4-4DF8-8ADF-E0534153B2A2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,18 +35,6 @@ Global
 		{037E73F5-DF6D-495D-AD4A-6633303B0894}.Release|iPhone.Build.0 = Release|Any CPU
 		{037E73F5-DF6D-495D-AD4A-6633303B0894}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{037E73F5-DF6D-495D-AD4A-6633303B0894}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
-		{D27E706B-B889-4958-B6EC-FB0C43FEBEC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D27E706B-B889-4958-B6EC-FB0C43FEBEC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D27E706B-B889-4958-B6EC-FB0C43FEBEC0}.Debug|iPhone.ActiveCfg = Debug|Any CPU
-		{D27E706B-B889-4958-B6EC-FB0C43FEBEC0}.Debug|iPhone.Build.0 = Debug|Any CPU
-		{D27E706B-B889-4958-B6EC-FB0C43FEBEC0}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
-		{D27E706B-B889-4958-B6EC-FB0C43FEBEC0}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
-		{D27E706B-B889-4958-B6EC-FB0C43FEBEC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D27E706B-B889-4958-B6EC-FB0C43FEBEC0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D27E706B-B889-4958-B6EC-FB0C43FEBEC0}.Release|iPhone.ActiveCfg = Release|Any CPU
-		{D27E706B-B889-4958-B6EC-FB0C43FEBEC0}.Release|iPhone.Build.0 = Release|Any CPU
-		{D27E706B-B889-4958-B6EC-FB0C43FEBEC0}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
-		{D27E706B-B889-4958-B6EC-FB0C43FEBEC0}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{A0D60B7F-6E6B-43FE-8AA6-CF4FD1A35A43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A0D60B7F-6E6B-43FE-8AA6-CF4FD1A35A43}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A0D60B7F-6E6B-43FE-8AA6-CF4FD1A35A43}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
@@ -89,6 +77,18 @@ Global
 		{CC8C4BF3-EBBE-4EE2-A2F3-168FC4B56541}.Release|iPhone.Build.0 = Release|Any CPU
 		{CC8C4BF3-EBBE-4EE2-A2F3-168FC4B56541}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{CC8C4BF3-EBBE-4EE2-A2F3-168FC4B56541}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{0407CB5D-BDE4-4DF8-8ADF-E0534153B2A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0407CB5D-BDE4-4DF8-8ADF-E0534153B2A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0407CB5D-BDE4-4DF8-8ADF-E0534153B2A2}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{0407CB5D-BDE4-4DF8-8ADF-E0534153B2A2}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{0407CB5D-BDE4-4DF8-8ADF-E0534153B2A2}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{0407CB5D-BDE4-4DF8-8ADF-E0534153B2A2}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{0407CB5D-BDE4-4DF8-8ADF-E0534153B2A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0407CB5D-BDE4-4DF8-8ADF-E0534153B2A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0407CB5D-BDE4-4DF8-8ADF-E0534153B2A2}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{0407CB5D-BDE4-4DF8-8ADF-E0534153B2A2}.Release|iPhone.Build.0 = Release|Any CPU
+		{0407CB5D-BDE4-4DF8-8ADF-E0534153B2A2}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{0407CB5D-BDE4-4DF8-8ADF-E0534153B2A2}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
