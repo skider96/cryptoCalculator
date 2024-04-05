@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using CryptoCurrencyCalculator.Core;
 
 namespace CryptoCurrencyCalculator
 {
@@ -108,7 +107,7 @@ namespace CryptoCurrencyCalculator
             double annualInterestRate = double.Parse(annualInterestRateTextBox.Text);
             int numberOfDays = int.Parse(numberOfDaysTextBox.Text);
 
-            Core.CryptoCurrencyCalculator calculator = new Core.CryptoCurrencyCalculator(initialValue, annualInterestRate);
+            Core.CryptoCurrencyCalculator.CryptoCurrencyCalculator calculator = new Core.CryptoCurrencyCalculator(initialValue, annualInterestRate);
             calculator.CalculateInterestForDays(numberOfDays);
             double futureValue = calculator.CalculateFutureValue(numberOfDays, 0);
 

@@ -1,6 +1,6 @@
 ﻿using CryptoCurrencyCalculator.IO.Validator;
 
-namespace CryptoCurrencyCalculator.Core
+namespace CryptoCurrencyCalculator.Core.CryptoCurrencyCalculator
 {
     public class Engine
     {
@@ -60,7 +60,7 @@ namespace CryptoCurrencyCalculator.Core
                         case "name":
                             currencyName = InputValidator.GetValidStringInput("Write the crypto currency name to calculate interest for:", _inputProvider);
                             break;
-                       
+
                         case "token value":
                             tokenValue = InputValidator.GetValidDoubleInput("Enter token value to EUR(optional, press Enter to skip):", _inputProvider);
                             break;

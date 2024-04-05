@@ -1,4 +1,5 @@
-﻿using CryptoCurrencyCalculator.Core;
+﻿using CryptoCurrencyCalculator.Core.CryptoCurrencyCalculator;
+using CryptoCurrencyCalculator.Core.DCACalc;
 using CryptoCurrencyCalculator.IO.File;
 using CryptoCurrencyCalculator.IO.Validator;
 
@@ -25,8 +26,21 @@ namespace CryptoCurrencyCalculator
 
             IOutputProvider outputProvider = string.IsNullOrEmpty(filePath) ? (IOutputProvider)new ConsoleOutputProvider() : new FileOutputProvider(filePath);
 
-            Engine engine = new(inputProvider, outputProvider);
-            engine.Run();
+            Console.WriteLine("Press 1 for the CryptoCurrencyCalculator or 2 for DCACalc? (1/2)");
+            int programChoice = InputValidator.GetValidIntInput(inputProvider.GetInput(), inputProvider);
+
+            if (programChoice == 1)
+            {
+                //This is the first functionality
+                Engine engine = new(inputProvider, outputProvider);
+                engine.Run();
+            }
+            else if (programChoice == 2)
+            {
+                //This is my second functionality
+                DcaCalc engineCalc = new(inputProvider, outputProvider);
+                engineCalc.Run(filePath);
+            }
         }
     }
 }

@@ -9,15 +9,13 @@ public class InputValidator
         return double.TryParse(input, out result) && result >= 0 && result <= 100;
     }
 
-
-
     // Метод за валидация на празен входен текст
     public static bool ValidateNotEmpty(string input)
     {
         return !string.IsNullOrWhiteSpace(input);
     }
 
-    //My method for validation
+    //Method for file path validation
     public string? FilePathValidation(bool isCorrectFilePath, string? filePath, IInputProvider inputProvider)
     {
         while (!isCorrectFilePath)

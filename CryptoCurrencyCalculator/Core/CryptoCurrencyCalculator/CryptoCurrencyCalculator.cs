@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace CryptoCurrencyCalculator.Core
+namespace CryptoCurrencyCalculator.Core.CryptoCurrencyCalculator
 {
     public class CryptoCurrencyCalculator
     {
