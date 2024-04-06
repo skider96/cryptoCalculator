@@ -10,10 +10,7 @@ public class InputValidator
     }
 
     // Метод за валидация на празен входен текст
-    public static bool ValidateNotEmpty(string input)
-    {
-        return !string.IsNullOrWhiteSpace(input);
-    }
+    public static bool ValidateNotEmpty(string input) => !string.IsNullOrWhiteSpace(input);
 
     //Method for file path validation
     public string? FilePathValidation(bool isCorrectFilePath, string? filePath, IInputProvider inputProvider)

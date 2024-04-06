@@ -1,4 +1,6 @@
-﻿namespace CryptoCurrencyCalculator.Core.DCACalc
+﻿using CryptoCurrencyCalculator.IO.Files;
+
+namespace CryptoCurrencyCalculator.Core.DCACalc
 {
     class DcaCalc
     {
@@ -22,12 +24,18 @@
             Console.Write("Enter price: ");
             decimal price = decimal.Parse(_inputProvider.GetInput());
             Console.Write("Enter quantity: ");
-            int quantity = int.Parse(_inputProvider.GetInput());
+            double quantity = double.Parse(_inputProvider.GetInput());
             Console.Write("Enter purchase date (YYYY-MM-DD): ");
             DateTime purchaseDate = DateTime.Parse(_inputProvider.GetInput());
 
             portfolio.AddInvestment(symbol, currencySymbol, price, quantity, purchaseDate);
 
+            //Deleting the previous line with DCA.
+            if (File.Exists(filePath))
+            {
+                FileOutputProvider.DeleteLastLine(filePath);
+            }
+            
             // Запазване на портфолиото във файл
             foreach (var investment in portfolio.Investments)
             {

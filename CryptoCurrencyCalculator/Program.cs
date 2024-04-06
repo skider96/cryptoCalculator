@@ -1,6 +1,6 @@
 ﻿using CryptoCurrencyCalculator.Core.CryptoCurrencyCalculator;
 using CryptoCurrencyCalculator.Core.DCACalc;
-using CryptoCurrencyCalculator.IO.File;
+using CryptoCurrencyCalculator.IO.Files;
 using CryptoCurrencyCalculator.IO.Validator;
 
 namespace CryptoCurrencyCalculator
@@ -37,7 +37,7 @@ namespace CryptoCurrencyCalculator
             }
             else if (programChoice == 2)
             {
-                //This is my second functionality
+                //This is the second functionality
                 DcaCalc engineCalc = new(inputProvider, outputProvider);
                 engineCalc.Run(filePath);
             }

@@ -57,10 +57,8 @@ namespace CryptoCurrencyCalculator.Core.CryptoCurrencyCalculator
             Console.WriteLine($"Total estimated rewards: {firstInterest * numberOfDays:f5}");
         }
 
-        public double FirstInterest()
-        {
-            return CurrentValue * (DailyInterestRate() / 100);
-        }
+        public double FirstInterest() => CurrentValue * (DailyInterestRate() / 100);
+
         public double DailyInterestRate()
         {
             double dailyInterestRate = AnnualInterestRate / 365;
@@ -72,19 +70,10 @@ namespace CryptoCurrencyCalculator.Core.CryptoCurrencyCalculator
             return CurrentValue * (dailyInterestRate / 100);
         }
 
-        public double CalculateCryptoToEUR(double tokenValueForOne)
-        {
-            return FirstInterest() * tokenValueForOne;
-        }
-        public double CalculateCryptoToEURDaily(double tokenValueForOne)
-        {
-            return CurrentValue * tokenValueForOne;
-        }
+        public double CalculateCryptoToEUR(double tokenValueForOne) => FirstInterest() * tokenValueForOne;
+        public double CalculateCryptoToEURDaily(double tokenValueForOne) => CurrentValue * tokenValueForOne;
 
-        public double CalculateCryptoToEURDailyReward(double dailyInterest, double tokenValueForOne)
-        {
-            return dailyInterest * tokenValueForOne;
-        }
+        public double CalculateCryptoToEURDailyReward(double dailyInterest, double tokenValueForOne) => dailyInterest * tokenValueForOne;
 
         public string CalculateInterestWithCompounding(int numberOfDays, double regularDeposit = 0, double tokenValueForOne = 0)
         {

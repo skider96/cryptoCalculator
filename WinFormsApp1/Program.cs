@@ -1,8 +1,4 @@
-﻿using System;
-using System.Drawing;
-using System.Windows.Forms;
-
-namespace CryptoCurrencyCalculator
+﻿namespace WinFormsApp1
 {
     public class GUI : Form
     {
@@ -107,7 +103,7 @@ namespace CryptoCurrencyCalculator
             double annualInterestRate = double.Parse(annualInterestRateTextBox.Text);
             int numberOfDays = int.Parse(numberOfDaysTextBox.Text);
 
-            Core.CryptoCurrencyCalculator.CryptoCurrencyCalculator calculator = new Core.CryptoCurrencyCalculator(initialValue, annualInterestRate);
+            CryptoCurrencyCalculator.Core.CryptoCurrencyCalculator.CryptoCurrencyCalculator calculator = new CryptoCurrencyCalculator.Core.CryptoCurrencyCalculator(initialValue, annualInterestRate);
             calculator.CalculateInterestForDays(numberOfDays);
             double futureValue = calculator.CalculateFutureValue(numberOfDays, 0);
 

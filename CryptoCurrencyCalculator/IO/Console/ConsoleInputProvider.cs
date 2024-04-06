@@ -1,7 +1,4 @@
 ﻿class ConsoleInputProvider : IInputProvider
 {
-    public string GetInput()
-    {
-        return Console.ReadLine();
-    }
+    public string GetInput() => Console.ReadLine();
 }

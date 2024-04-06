@@ -1,6 +1,6 @@
 ﻿namespace CryptoCurrencyCalculator.Core.DCACalc;
 
-class Portfolio
+public class Portfolio
 {
     public List<Investment> Investments { get; set; }
 
@@ -9,16 +9,18 @@ class Portfolio
         Investments = new List<Investment>();
     }
 
-    public decimal CalculateDollarCostAverage(string symbol)
+    public decimal CalculateDollarCostAverage(string symbol) // NEEDS TO BE CORRECTED
     {
         decimal totalInvestment = 0;
-        int totalQuantity = 0;
+        double totalQuantity = 0;
 
+        decimal priceForOnePiece = 0;
         foreach (var investment in Investments)
         {
             if (investment.Symbol == symbol)
             {
-                totalInvestment += investment.Price * investment.Quantity;
+                priceForOnePiece = investment.Price / (decimal)investment.Quantity; ;
+                totalInvestment += investment.Price * (decimal)investment.Quantity;
                 totalQuantity += investment.Quantity;
             }
         }
@@ -26,13 +28,10 @@ class Portfolio
         if (totalQuantity == 0)
             return 0;
 
-        return totalInvestment / totalQuantity;
+        return totalInvestment / (decimal)totalQuantity;
     }
 
-    public void AddInvestment(string symbol, string currencySymbol, decimal price, int quantity, DateTime purchaseDate)
-    {
-        Investments.Add(new Investment { Symbol = symbol, CurrencySymbol = currencySymbol, Price = price, Quantity = quantity, PurchaseDate = purchaseDate });
-    }
+    public void AddInvestment(string symbol, string currencySymbol, decimal price, double quantity, DateTime purchaseDate) => Investments.Add(new Investment(symbol, currencySymbol, price, quantity, purchaseDate));
 
     public void LoadOrderInfoFromFile(string filePath)
     {
@@ -44,14 +43,9 @@ class Portfolio
             string[] parts = line.Split(',');
             if (parts.Length == 5)
             {
-                Investments.Add(new Investment
-                {
-                    Symbol = parts[0],
-                    CurrencySymbol = parts[1],
-                    Price = decimal.Parse(parts[2]),
-                    Quantity = int.Parse(parts[3]),
-                    PurchaseDate = DateTime.Parse(parts[4])
-                });
+                Investments.Add(new
+                    Investment(parts[0], parts[1], decimal.Parse(parts[2]), double.Parse(parts[3]),
+                        DateTime.Parse(parts[4])));
             }
         }
     }
