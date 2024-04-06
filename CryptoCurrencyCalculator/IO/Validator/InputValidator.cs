@@ -13,7 +13,7 @@ public class InputValidator
     public static bool ValidateNotEmpty(string input) => !string.IsNullOrWhiteSpace(input);
 
     //Method for file path validation
-    public string? FilePathValidation(bool isCorrectFilePath, string? filePath, IInputProvider inputProvider)
+    public static string? FilePathValidation(bool isCorrectFilePath, string? filePath, IInputProvider inputProvider)
     {
         while (!isCorrectFilePath)
         {
@@ -64,7 +64,7 @@ public class InputValidator
         } while (string.IsNullOrWhiteSpace(result));
         return result;
     }
-    public string GetValidFilePath(IInputProvider inputProvider, InputValidator validator)
+    public static string GetValidFilePath(IInputProvider inputProvider)
     {
         bool isCorrectFilePath = false;
         string filePath;
@@ -72,7 +72,7 @@ public class InputValidator
         {
             Console.WriteLine("Enter file path to save the output:");
             filePath = inputProvider.GetInput();
-        } while (string.IsNullOrEmpty(filePath) || validator.FilePathValidation(isCorrectFilePath, filePath, inputProvider) == null);
+        } while (string.IsNullOrEmpty(filePath) || FilePathValidation(isCorrectFilePath, filePath, inputProvider) == null);
         return filePath;
     }
 }

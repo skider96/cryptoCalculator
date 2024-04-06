@@ -1,4 +1,4 @@
-﻿    public interface IOutputProvider
-    {
-        void WriteOutput(string output);
+﻿public interface IOutputProvider
+{
+    void WriteOutput(string output);
 }

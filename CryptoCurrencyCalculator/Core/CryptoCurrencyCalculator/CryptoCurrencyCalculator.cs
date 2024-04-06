@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using CryptoCurrencyCalculator.Utilites.Messages;
 
 namespace CryptoCurrencyCalculator.Core.CryptoCurrencyCalculator
 {
@@ -20,7 +21,7 @@ namespace CryptoCurrencyCalculator.Core.CryptoCurrencyCalculator
             {
                 if (value < 0)
                 {
-                    throw new ArgumentOutOfRangeException(nameof(value), "Value should be more than 0!");
+                    throw new ArgumentOutOfRangeException(nameof(value), ExceptionMessages.ValueShouldBeMoreThanZero);
                 }
                 currentValue = value;
             }
@@ -33,7 +34,7 @@ namespace CryptoCurrencyCalculator.Core.CryptoCurrencyCalculator
             {
                 if (value < 0)
                 {
-                    throw new ArgumentOutOfRangeException(nameof(value), "Value should be more than 0!");
+                    throw new ArgumentOutOfRangeException(nameof(value),ExceptionMessages.ValueShouldBeMoreThanZero);
                 }
                 annualInterestRate = value;
             }

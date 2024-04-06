@@ -1,4 +1,5 @@
 using CryptoCurrencyCalculator.Core.DCACalc;
+using System.Diagnostics;
 namespace CryptoCurrencyCalculator.Tests
 {
     public class PortfolioTests
@@ -32,6 +33,20 @@ namespace CryptoCurrencyCalculator.Tests
             Assert.That(result, Is.EqualTo(55000));
         }
 
-        // Add more test methods as needed
+        [Test]
+        public void AddInvestmentWorking()
+        {
+            // Arrange
+            var portfolio = new Portfolio();
+
+            // Act
+            portfolio.AddInvestment("BTC", "USD", 60000, 1, new DateTime(2023, 1, 2));
+
+            //Assert
+            Assert.That(portfolio.Investments.Count,Is.EqualTo(1));
+        }
+
+
+
     }
 }

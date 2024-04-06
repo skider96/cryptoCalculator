@@ -10,7 +10,6 @@ namespace CryptoCurrencyCalculator
         static void Main(string[] args)
         {
             Console.WriteLine("This is Crypto Calculator");
-            InputValidator validator = new InputValidator();
             int inputChoice = InputReader.GetInputChoice(new ConsoleInputProvider());
 
             IInputProvider inputProvider = (inputChoice == 2) ? new FileInputProvider(Console.ReadLine()) : (IInputProvider)new ConsoleInputProvider();
@@ -21,7 +20,7 @@ namespace CryptoCurrencyCalculator
 
             if (saveToFileChoice.ToLower() == "y")
             {
-                filePath = validator.GetValidFilePath(inputProvider, validator);
+                filePath = InputValidator.GetValidFilePath(inputProvider);
             }
 
             IOutputProvider outputProvider = string.IsNullOrEmpty(filePath) ? (IOutputProvider)new ConsoleOutputProvider() : new FileOutputProvider(filePath);
