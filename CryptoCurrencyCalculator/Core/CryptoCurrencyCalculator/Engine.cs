@@ -1,6 +1,5 @@
-﻿using CryptoCurrencyCalculator.IO.Validator;
-using CryptoCurrencyCalculator.Utilites.Messages;
-
+﻿using static CryptoCurrencyCalculator.IO.Validator.InputValidator;
+using static CryptoCurrencyCalculator.Utilites.Messages.InputMessages;
 namespace CryptoCurrencyCalculator.Core.CryptoCurrencyCalculator
 {
     public class Engine
@@ -16,54 +15,54 @@ namespace CryptoCurrencyCalculator.Core.CryptoCurrencyCalculator
 
         public void Run()
         {
-            Console.WriteLine("Write the name of the crypto currency:");
+            Console.WriteLine(WriteCryptoName);
             string currencyName = _inputProvider.GetInput();
             _outputProvider.WriteOutput($"This calculation is for {currencyName}");
 
-            Console.WriteLine("Write Initial deposit:");
+            Console.WriteLine(WriteDeposit);
             double initialValue = Convert.ToDouble(_inputProvider.GetInput()); // Initial deposit
 
-            Console.WriteLine(InputMessages.WriteAnnualInterestRate);
+            Console.WriteLine(WriteAnnualInterestRate);
             double annualInterestRate = Convert.ToDouble(_inputProvider.GetInput()); ; // Annual interest rate (%)
 
-            Console.WriteLine(InputMessages.WritePeriodInDays);
+            Console.WriteLine(WritePeriodInDays);
             int numberOfDays = Convert.ToInt32(_inputProvider.GetInput()); // Number of days to calculate interest for
 
-            Console.WriteLine("Enter token value to EUR(optional, press Enter to skip):");
+            Console.WriteLine(WriteValue + OptionalData);
             double tokenValue = GetOptionalData();
 
             // Добавяне на възможност за връщане назад и промяна на данните
             string userInput;
             do
             {
-                Console.WriteLine(InputMessages.WannaGoBack);
+                Console.WriteLine(WannaGoBack);
                 userInput = _inputProvider.GetInput().ToLower();
 
                 if (userInput == "y")
                 {
-                    Console.WriteLine(InputMessages.WhatToChange);
+                    Console.WriteLine(WhatToChange);
                     string inputToChange = _inputProvider.GetInput().ToLower();
 
                     switch (inputToChange)
                     {
                         case "deposit":
-                            initialValue = InputValidator.GetValidDoubleInput("Write Initial deposit:", _inputProvider);
+                            initialValue = GetValidDoubleInput(WriteDeposit, _inputProvider);
                             break;
 
                         case "interest":
-                            annualInterestRate = InputValidator.GetValidDoubleInput(InputMessages.WriteAnnualInterestRate, _inputProvider);
+                            annualInterestRate = GetValidDoubleInput(WriteAnnualInterestRate, _inputProvider);
                             break;
 
                         case "days":
-                            numberOfDays = InputValidator.GetValidIntInput(InputMessages.WritePeriodInDays, _inputProvider);
+                            numberOfDays = GetValidIntInput(WritePeriodInDays, _inputProvider);
                             break;
 
                         case "name":
-                            currencyName = InputValidator.GetValidStringInput("Write the crypto currency name to calculate interest for:", _inputProvider);
+                            currencyName = GetValidStringInput(WriteCryptoName, _inputProvider);
                             break;
 
                         case "token value":
-                            tokenValue = InputValidator.GetValidDoubleInput("Enter token value to EUR" + InputMessages.OptionalData, _inputProvider);
+                            tokenValue = GetValidDoubleInput(WriteValue + OptionalData, _inputProvider);
                             break;
                         //This is not implemented yet
                         //case "filepath":
@@ -88,7 +87,7 @@ namespace CryptoCurrencyCalculator.Core.CryptoCurrencyCalculator
                     _outputProvider.WriteOutput($"The estimated reward value in EUR is: {calculator.CalculateCryptoToEUR(tokenValue)}");
                 }
 
-                Console.WriteLine("Enter regular deposit amount" + InputMessages.OptionalData);
+                Console.WriteLine("Enter regular deposit amount" + OptionalData);
                 double regularDeposit = GetOptionalData();
 
                 _outputProvider.WriteOutput(calculator.CalculateInterestWithCompounding(numberOfDays, regularDeposit, tokenValue));

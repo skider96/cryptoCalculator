@@ -1,4 +1,5 @@
 ﻿using CryptoCurrencyCalculator.IO.Files;
+using CryptoCurrencyCalculator.Utilites.Messages;
 
 namespace CryptoCurrencyCalculator.Core.DCACalc
 {
@@ -25,7 +26,7 @@ namespace CryptoCurrencyCalculator.Core.DCACalc
             decimal price = decimal.Parse(_inputProvider.GetInput());
             Console.Write("Enter quantity: ");
             double quantity = double.Parse(_inputProvider.GetInput());
-            Console.Write("Enter purchase date (YYYY-MM-DD): ");
+            Console.Write(InputMessages.WriteDate);
             DateTime purchaseDate = DateTime.Parse(_inputProvider.GetInput());
 
             portfolio.AddInvestment(symbol, currencySymbol, price, quantity, purchaseDate);

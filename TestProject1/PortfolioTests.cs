@@ -45,8 +45,5 @@ namespace CryptoCurrencyCalculator.Tests
             //Assert
             Assert.That(portfolio.Investments.Count,Is.EqualTo(1));
         }
-
-
-
     }
 }

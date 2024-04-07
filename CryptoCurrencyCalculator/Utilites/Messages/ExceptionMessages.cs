@@ -10,5 +10,6 @@ namespace CryptoCurrencyCalculator.Utilites.Messages
     {
         public const string ValueShouldBeMoreThanZero = "Value should be more than 0!";
 
+        public const string FilePathIncorrect = "The file path is not correct!";
     }
 }

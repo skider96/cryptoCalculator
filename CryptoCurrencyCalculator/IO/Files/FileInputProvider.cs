@@ -1,4 +1,7 @@
-﻿namespace CryptoCurrencyCalculator.IO.Files
+﻿using CryptoCurrencyCalculator.Utilites.Messages;
+using static CryptoCurrencyCalculator.Utilites.Messages.ExceptionMessages;
+
+namespace CryptoCurrencyCalculator.IO.Files
 {
     public class FileInputProvider : IInputProvider
     {
@@ -16,7 +19,7 @@
             {
                 if (!value.EndsWith(".txt") || !value.EndsWith(".doc"))
                 {
-                    throw new ArgumentException("The file path is not correct!");
+                    throw new ArgumentException(FilePathIncorrect);
                 }
 
                 filePath = value;
