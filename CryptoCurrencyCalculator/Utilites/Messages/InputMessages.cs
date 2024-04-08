@@ -27,6 +27,9 @@ namespace CryptoCurrencyCalculator.Utilites.Messages
 
         public const string WriteValue = "Enter token value to EUR";
 
+        public const string WannaSaveToFile = "Do you want to save the output to a file? (y/n)";
+
+        public const string ChooseFunction = "Press 1 for the CryptoCurrencyCalculator or 2 for DCACalc: (1/2)";
 
     }
 }

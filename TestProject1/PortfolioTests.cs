@@ -4,7 +4,6 @@ namespace CryptoCurrencyCalculator.Tests
 {
     public class PortfolioTests
     {
-
         [Test]
         public void CalculateDollarCostAverage_ReturnsZero_WhenNoInvestments()
         {

@@ -1,4 +1,5 @@
-﻿using static CryptoCurrencyCalculator.IO.Validator.InputValidator;
+﻿using CryptoCurrencyCalculator.Utilites.Messages;
+using static CryptoCurrencyCalculator.IO.Validator.InputValidator;
 using static CryptoCurrencyCalculator.Utilites.Messages.InputMessages;
 namespace CryptoCurrencyCalculator.Core.CryptoCurrencyCalculator
 {
@@ -70,7 +71,7 @@ namespace CryptoCurrencyCalculator.Core.CryptoCurrencyCalculator
                         //    break;
 
                         default:
-                            Console.WriteLine("Invalid input.");
+                            Console.WriteLine(ExceptionMessages.InvalidInput);
                             break;
                     }
                 }
@@ -80,11 +81,11 @@ namespace CryptoCurrencyCalculator.Core.CryptoCurrencyCalculator
             {
                 CryptoCurrencyCalculator calculator = new(initialValue, annualInterestRate);
 
-                _outputProvider.WriteOutput($"The calculated daily interest is: {calculator.CalculateDailyInterest().ToString()}");
+                _outputProvider.WriteOutput(ResultMessages.DailyInterest + calculator.CalculateDailyInterest().ToString());
 
                 if (tokenValue != 0)
                 {
-                    _outputProvider.WriteOutput($"The estimated reward value in EUR is: {calculator.CalculateCryptoToEUR(tokenValue)}");
+                    _outputProvider.WriteOutput(ResultMessages.EstimatedReward + calculator.CalculateCryptoToEUR(tokenValue));
                 }
 
                 Console.WriteLine("Enter regular deposit amount" + OptionalData);
@@ -92,7 +93,8 @@ namespace CryptoCurrencyCalculator.Core.CryptoCurrencyCalculator
 
                 _outputProvider.WriteOutput(calculator.CalculateInterestWithCompounding(numberOfDays, regularDeposit, tokenValue));
                 double futureValue = calculator.CalculateFutureValue(numberOfDays, regularDeposit);
-                _outputProvider.WriteOutput($"Future value after {numberOfDays} days: {futureValue:f2}");
+                _outputProvider.WriteOutput(ResultMessages.FutureValue(numberOfDays, futureValue));
+                    /*$"Future value after {numberOfDays} days: {futureValue:f2}"*/
             }
             catch (ArgumentOutOfRangeException e)
             {

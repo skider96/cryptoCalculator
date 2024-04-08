@@ -2,6 +2,8 @@
 using CryptoCurrencyCalculator.Core.DCACalc;
 using CryptoCurrencyCalculator.IO.Files;
 using CryptoCurrencyCalculator.IO.Validator;
+using CryptoCurrencyCalculator.Utilites.Messages;
+using static IOProvider;
 
 namespace CryptoCurrencyCalculator
 {
@@ -9,12 +11,12 @@ namespace CryptoCurrencyCalculator
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("This is Crypto Calculator");
-            int inputChoice = InputReader.GetInputChoice(new ConsoleInputProvider());
+            Console.WriteLine(AnounceMessages.Welcome);
+            int inputChoice = GetInputChoice(new ConsoleInputProvider());
 
-            IInputProvider inputProvider = (inputChoice == 2) ? new FileInputProvider(Console.ReadLine()) : (IInputProvider)new ConsoleInputProvider();
+            IInputProvider inputProvider = GetInputProvider(inputChoice);
 
-            Console.WriteLine("Do you want to save the output to a file? (y/n)");
+            Console.WriteLine(InputMessages.WannaSaveToFile);
             string saveToFileChoice = inputProvider.GetInput();
             string filePath = null;
 
@@ -23,9 +25,9 @@ namespace CryptoCurrencyCalculator
                 filePath = InputValidator.GetValidFilePath(inputProvider);
             }
 
-            IOutputProvider outputProvider = string.IsNullOrEmpty(filePath) ? (IOutputProvider)new ConsoleOutputProvider() : new FileOutputProvider(filePath);
+            IOutputProvider outputProvider = GetOutputProvider(filePath);
 
-            Console.WriteLine("Press 1 for the CryptoCurrencyCalculator or 2 for DCACalc? (1/2)");
+            Console.WriteLine(InputMessages.ChooseFunction);
             int programChoice = InputValidator.GetValidIntInput(inputProvider.GetInput(), inputProvider);
 
             if (programChoice == 1)
