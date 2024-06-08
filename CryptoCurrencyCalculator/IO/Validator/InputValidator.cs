@@ -1,6 +1,4 @@
-﻿using CryptoCurrencyCalculator.IO.Interfaces;
-using CryptoCurrencyCalculator.Utilites.Messages;
-using System;
+﻿using System;
 
 namespace CryptoCurrencyCalculator.IO.Validator;
 

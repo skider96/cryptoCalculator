@@ -1,5 +1,4 @@
 ﻿using System.Text;
-using static CryptoCurrencyCalculator.Utilites.Messages.ExceptionMessages;
 
 namespace CryptoCurrencyCalculator.Core.CryptoCurrencyCalculator
 {

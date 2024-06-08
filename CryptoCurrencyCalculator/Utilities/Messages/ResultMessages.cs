@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CryptoCurrencyCalculator.Utilites.Messages
+namespace CryptoCurrencyCalculator.Utilities.Messages
 {
     public class ResultMessages
     {

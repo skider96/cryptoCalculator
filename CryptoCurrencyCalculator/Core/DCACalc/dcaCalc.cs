@@ -1,8 +1,4 @@
-﻿using CryptoCurrencyCalculator.IO.Files;
-using CryptoCurrencyCalculator.IO.Interfaces;
-using CryptoCurrencyCalculator.Utilites.Messages;
-
-namespace CryptoCurrencyCalculator.Core.DCACalc
+﻿namespace CryptoCurrencyCalculator.Core.DCACalc
 {
     class DCACalc
     {

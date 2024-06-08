@@ -1,8 +1,4 @@
-﻿using CryptoCurrencyCalculator.IO.Console;
-using CryptoCurrencyCalculator.IO.Files;
-using CryptoCurrencyCalculator.IO.Interfaces;
-
-public static class IOProvider
+﻿public static class IOProvider
 {
     public static int GetInputChoice(IInputProvider inputProvider)
     {

@@ -1,8 +1,4 @@
-﻿using CryptoCurrencyCalculator.IO.Interfaces;
-using CryptoCurrencyCalculator.Utilites.Messages;
-using static CryptoCurrencyCalculator.IO.Validator.InputValidator;
-using static CryptoCurrencyCalculator.Utilites.Messages.InputMessages;
-namespace CryptoCurrencyCalculator.Core.CryptoCurrencyCalculator
+﻿namespace CryptoCurrencyCalculator.Core.CryptoCurrencyCalculator
 {
     public class CryptoCurrencyCalculatorEngine
     {

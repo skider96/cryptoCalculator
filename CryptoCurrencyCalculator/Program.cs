@@ -1,10 +1,6 @@
 ﻿using CryptoCurrencyCalculator.Core.CryptoCurrencyCalculator;
 using CryptoCurrencyCalculator.Core.DCACalc;
-using CryptoCurrencyCalculator.IO.Console;
-using CryptoCurrencyCalculator.IO.Files;
-using CryptoCurrencyCalculator.IO.Interfaces;
 using CryptoCurrencyCalculator.IO.Validator;
-using CryptoCurrencyCalculator.Utilites.Messages;
 using static IOProvider;
 
 namespace CryptoCurrencyCalculator

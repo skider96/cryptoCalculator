@@ -1,7 +1,4 @@
-﻿using CryptoCurrencyCalculator.IO.Interfaces;
-using static CryptoCurrencyCalculator.Utilites.Messages.ExceptionMessages;
-
-namespace CryptoCurrencyCalculator.IO.Files
+﻿namespace CryptoCurrencyCalculator.IO.Files
 {
     public class FileInputProvider : IInputProvider
     {

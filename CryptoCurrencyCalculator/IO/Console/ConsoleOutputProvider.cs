@@ -1,6 +1,4 @@
-﻿using CryptoCurrencyCalculator.IO.Interfaces;
-
-namespace CryptoCurrencyCalculator.IO.Console;
+﻿namespace CryptoCurrencyCalculator.IO.Console;
 
 public class ConsoleOutputProvider : IOutputProvider
 {

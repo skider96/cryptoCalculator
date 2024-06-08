@@ -1,6 +1,4 @@
-﻿using CryptoCurrencyCalculator.IO.Interfaces;
-
-namespace CryptoCurrencyCalculator.IO.Files
+﻿namespace CryptoCurrencyCalculator.IO.Files
 {
     public class FileOutputProvider : IOutputProvider
     {

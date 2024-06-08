@@ -1,6 +1,5 @@
 ﻿using System.Net;
 using System.IO;
-using CryptoCurrencyCalculator.IO.Interfaces;
 
 namespace CryptoCurrencyCalculator
 {
