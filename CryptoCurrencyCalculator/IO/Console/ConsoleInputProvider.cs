@@ -1,4 +1,8 @@
-﻿class ConsoleInputProvider : IInputProvider
+﻿using CryptoCurrencyCalculator.IO.Interfaces;
+
+namespace CryptoCurrencyCalculator.IO.Console;
+
+class ConsoleInputProvider : IInputProvider
 {
-    public string GetInput() => Console.ReadLine();
+    public string GetInput() => System.Console.ReadLine();
 }

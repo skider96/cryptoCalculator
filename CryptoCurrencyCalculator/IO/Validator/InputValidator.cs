@@ -1,4 +1,8 @@
-﻿namespace CryptoCurrencyCalculator.IO.Validator;
+﻿using CryptoCurrencyCalculator.IO.Interfaces;
+using CryptoCurrencyCalculator.Utilites.Messages;
+using System;
+
+namespace CryptoCurrencyCalculator.IO.Validator;
 
 public class InputValidator
 {
@@ -20,7 +24,7 @@ public class InputValidator
             filePath = inputProvider.GetInput();
             if (!filePath.EndsWith(".txt") && !filePath.EndsWith(".doc") && ValidateNotEmpty(filePath))
             {
-                Console.WriteLine("The file path is not correct!\nTry again!");
+                System.Console.WriteLine(ExceptionMessages.FilePathIncorrect + "\nTry again!");
             }
             else
             {
@@ -37,7 +41,7 @@ public class InputValidator
         double result;
         do
         {
-            Console.WriteLine(message);
+            System.Console.WriteLine(message);
         } while (!double.TryParse(inputProvider.GetInput(), out result) || result < 0);
         return result;
     }
@@ -48,7 +52,7 @@ public class InputValidator
         int result;
         do
         {
-            Console.WriteLine(message);
+            System.Console.WriteLine(message);
         } while (!int.TryParse(inputProvider.GetInput(), out result) || result <= 0);
         return result;
     }
@@ -59,7 +63,7 @@ public class InputValidator
         string result;
         do
         {
-            Console.WriteLine(message);
+            System.Console.WriteLine(message);
             result = inputProvider.GetInput();
         } while (string.IsNullOrWhiteSpace(result));
         return result;
@@ -70,7 +74,7 @@ public class InputValidator
         string filePath;
         do
         {
-            Console.WriteLine("Enter file path to save the output:");
+            System.Console.WriteLine(InputMessages.WriteFilepath);
             filePath = inputProvider.GetInput();
         } while (string.IsNullOrEmpty(filePath) || FilePathValidation(isCorrectFilePath, filePath, inputProvider) == null);
         return filePath;

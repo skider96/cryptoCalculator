@@ -1,14 +1,15 @@
-﻿using CryptoCurrencyCalculator.Utilites.Messages;
+﻿using CryptoCurrencyCalculator.IO.Interfaces;
+using CryptoCurrencyCalculator.Utilites.Messages;
 using static CryptoCurrencyCalculator.IO.Validator.InputValidator;
 using static CryptoCurrencyCalculator.Utilites.Messages.InputMessages;
 namespace CryptoCurrencyCalculator.Core.CryptoCurrencyCalculator
 {
-    public class Engine
+    public class CryptoCurrencyCalculatorEngine
     {
         private readonly IInputProvider _inputProvider;
         private readonly IOutputProvider _outputProvider;
 
-        public Engine(IInputProvider inputProvider, IOutputProvider outputProvider)
+        public CryptoCurrencyCalculatorEngine(IInputProvider inputProvider, IOutputProvider outputProvider)
         {
             _inputProvider = inputProvider;
             _outputProvider = outputProvider;

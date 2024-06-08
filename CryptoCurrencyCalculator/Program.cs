@@ -1,6 +1,8 @@
 ﻿using CryptoCurrencyCalculator.Core.CryptoCurrencyCalculator;
 using CryptoCurrencyCalculator.Core.DCACalc;
+using CryptoCurrencyCalculator.IO.Console;
 using CryptoCurrencyCalculator.IO.Files;
+using CryptoCurrencyCalculator.IO.Interfaces;
 using CryptoCurrencyCalculator.IO.Validator;
 using CryptoCurrencyCalculator.Utilites.Messages;
 using static IOProvider;
@@ -33,14 +35,12 @@ namespace CryptoCurrencyCalculator
             if (programChoice == 1)
             {
                 //This is the first functionality
-                Engine engine = new(inputProvider, outputProvider);
-                engine.Run();
+                new CryptoCurrencyCalculatorEngine(inputProvider, outputProvider).Run();
             }
             else if (programChoice == 2)
             {
                 //This is the second functionality
-                DcaCalc engineCalc = new(inputProvider, outputProvider);
-                engineCalc.Run(filePath);
+                new DCACalc(inputProvider, outputProvider).Run(filePath);
             }
         }
     }

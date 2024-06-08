@@ -1,4 +1,4 @@
-﻿using CryptoCurrencyCalculator.Utilites.Messages;
+﻿using CryptoCurrencyCalculator.IO.Interfaces;
 using static CryptoCurrencyCalculator.Utilites.Messages.ExceptionMessages;
 
 namespace CryptoCurrencyCalculator.IO.Files

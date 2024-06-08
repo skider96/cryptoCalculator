@@ -1,4 +1,6 @@
-﻿using CryptoCurrencyCalculator.IO.Files;
+﻿using CryptoCurrencyCalculator.IO.Console;
+using CryptoCurrencyCalculator.IO.Files;
+using CryptoCurrencyCalculator.IO.Interfaces;
 
 public static class IOProvider
 {

@@ -1,4 +1,6 @@
-﻿namespace CryptoCurrencyCalculator.IO.Files
+﻿using CryptoCurrencyCalculator.IO.Interfaces;
+
+namespace CryptoCurrencyCalculator.IO.Files
 {
     public class FileOutputProvider : IOutputProvider
     {
@@ -11,7 +13,7 @@
 
         public void WriteOutput(string output)
         {
-            Console.WriteLine(output);
+           System.Console.WriteLine(output);
             // Създаване на файлов поток към файла
             using (FileStream fileStream = new(filePath, FileMode.Append, FileAccess.Write))
             {

@@ -1,14 +1,15 @@
 ﻿using CryptoCurrencyCalculator.IO.Files;
+using CryptoCurrencyCalculator.IO.Interfaces;
 using CryptoCurrencyCalculator.Utilites.Messages;
 
 namespace CryptoCurrencyCalculator.Core.DCACalc
 {
-    class DcaCalc
+    class DCACalc
     {
         private readonly IInputProvider _inputProvider;
         private readonly IOutputProvider _outputProvider;
 
-        public DcaCalc(IInputProvider inputProvider, IOutputProvider outputProvider)
+        public DCACalc(IInputProvider inputProvider, IOutputProvider outputProvider)
         {
             _inputProvider = inputProvider;
             _outputProvider = outputProvider;
